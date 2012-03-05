@@ -554,10 +554,10 @@ public class ConcurrencyUtils {
     }
 
     /**
-     * Checks if n is a power-of-two number
+     * Checks if n is a power-of-two number.
      * 
      * @param n
-     * @return true if n is power of 2
+     * @return true if n is power-of-two number
      */
     public static boolean isPowerOf2(int n) {
         if (n <= 0)
