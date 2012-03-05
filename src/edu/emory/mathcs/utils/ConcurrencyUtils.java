@@ -54,8 +54,10 @@ import cern.colt.function.tobject.ObjectObjectFunction;
  * @author Piotr Wendykier (piotr.wendykier@gmail.com)
  */
 public class ConcurrencyUtils {
-    private static ExecutorService THREAD_POOL = Executors.newCachedThreadPool(new CustomThreadFactory(
-            new CustomExceptionHandler()));
+    /**
+     * Thread pool.
+     */
+    private static ExecutorService THREAD_POOL = Executors.newCachedThreadPool(new CustomThreadFactory(new CustomExceptionHandler()));
 
     private static int NTHREADS = getNumberOfProcessors();
 
@@ -73,6 +75,7 @@ public class ConcurrencyUtils {
         public void uncaughtException(Thread t, Throwable e) {
             e.printStackTrace();
         }
+
     }
 
     private static class CustomThreadFactory implements ThreadFactory {
@@ -145,7 +148,7 @@ public class ConcurrencyUtils {
     }
 
     /**
-     * Returns the number of available processors
+     * Returns the number of available processors.
      * 
      * @return number of available processors
      */
