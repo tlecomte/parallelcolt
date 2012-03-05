@@ -521,10 +521,10 @@ public class ConcurrencyUtils {
     }
 
     /**
-     * Returns the closest power of two greater than or equal to x.
+     * Returns the closest power-of-two number greater than or equal to x.
      * 
      * @param x
-     * @return the closest power of two greater than or equal to x
+     * @return the closest power-of-two number greater than or equal to x
      */
     public static int nextPow2(int x) {
         if (x < 1)
@@ -542,10 +542,10 @@ public class ConcurrencyUtils {
     }
 
     /**
-     * Returns the closest power of two less than or equal to x
+     * Returns the closest power-of-two number less than or equal to x.
      * 
      * @param x
-     * @return the closest power of two less then or equal to x
+     * @return the closest power-of-two number less then or equal to x
      */
     public static int prevPow2(int x) {
         if (x < 1)
