@@ -554,16 +554,16 @@ public class ConcurrencyUtils {
     }
 
     /**
-     * Checks if n is a power-of-two number.
+     * Checks if x is a power-of-two number.
      * 
-     * @param n
-     * @return true if n is power-of-two number
+     * @param x
+     * @return true if x is a power-of-two number
      */
-    public static boolean isPowerOf2(int n) {
-        if (n <= 0)
+    public static boolean isPowerOf2(int x) {
+        if (x <= 0)
             return false;
         else
-            return (n & (n - 1)) == 0;
+            return (x & (x - 1)) == 0;
     }
     
     public static int extendDimension(int x) {
