@@ -552,6 +552,19 @@ public class ConcurrencyUtils {
             throw new IllegalArgumentException("x must be greater or equal 1");
         return (int) Math.pow(2, Math.floor(Math.log(x) / Math.log(2)));
     }
+
+    /**
+     * Checks if n is a power-of-two number
+     * 
+     * @param n
+     * @return true if n is power of 2
+     */
+    public static boolean isPowerOf2(int n) {
+        if (n <= 0)
+            return false;
+        else
+            return (n & (n - 1)) == 0;
+    }
     
     public static int extendDimension(int x) {
         if (x < 1)
@@ -571,18 +584,5 @@ public class ConcurrencyUtils {
             p = p - 1;
         }
         return p;
-    }
-
-    /**
-     * Checks if n is a power-of-two number
-     * 
-     * @param n
-     * @return true if n is power of 2
-     */
-    public static boolean isPowerOf2(int n) {
-        if (n <= 0)
-            return false;
-        else
-            return (n & (n - 1)) == 0;
     }
 }
