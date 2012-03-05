@@ -541,6 +541,18 @@ public class ConcurrencyUtils {
         return x + 1;
     }
 
+    /**
+     * Returns the closest power of two less than or equal to x
+     * 
+     * @param x
+     * @return the closest power of two less then or equal to x
+     */
+    public static int prevPow2(int x) {
+        if (x < 1)
+            throw new IllegalArgumentException("x must be greater or equal 1");
+        return (int) Math.pow(2, Math.floor(Math.log(x) / Math.log(2)));
+    }
+    
     public static int extendDimension(int x) {
         if (x < 1)
             throw new IllegalArgumentException("x must be greater or equal 1");
@@ -559,18 +571,6 @@ public class ConcurrencyUtils {
             p = p - 1;
         }
         return p;
-    }
-
-    /**
-     * Returns the closest power of two less than or equal to x
-     * 
-     * @param x
-     * @return the closest power of two less then or equal to x
-     */
-    public static int prevPow2(int x) {
-        if (x < 1)
-            throw new IllegalArgumentException("x must be greater or equal 1");
-        return (int) Math.pow(2, Math.floor(Math.log(x) / Math.log(2)));
     }
 
     /**
