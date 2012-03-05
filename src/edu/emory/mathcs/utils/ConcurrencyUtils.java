@@ -59,8 +59,6 @@ public class ConcurrencyUtils {
      */
     private static ExecutorService THREAD_POOL = Executors.newCachedThreadPool(new CustomThreadFactory(new CustomExceptionHandler()));
 
-    private static int NTHREADS = getNumberOfProcessors();
-
     private static int THREADS_BEGIN_N_1D_FFT_2THREADS = 8192;
 
     private static int THREADS_BEGIN_N_1D_FFT_4THREADS = 65536;
@@ -71,6 +69,8 @@ public class ConcurrencyUtils {
 
     private static int THREADS_BEGIN_N_3D = 65536;
 
+    private static int NTHREADS = getNumberOfProcessors();
+    
     private static class CustomExceptionHandler implements Thread.UncaughtExceptionHandler {
         public void uncaughtException(Thread t, Throwable e) {
             e.printStackTrace();
