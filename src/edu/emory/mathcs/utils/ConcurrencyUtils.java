@@ -146,35 +146,6 @@ public class ConcurrencyUtils {
         }
         return THREAD_POOL.submit(task);
     }
-
-    /**
-     * Returns the number of available processors.
-     * 
-     * @return number of available processors
-     */
-    public static int getNumberOfProcessors() {
-        return Runtime.getRuntime().availableProcessors();
-    }
-
-    /**
-     * Returns the current number of threads.
-     * 
-     * @return the current number of threads.
-     */
-    public static int getNumberOfThreads() {
-        return NTHREADS;
-    }
-
-    /**
-     * Sets the number of threads
-     * 
-     * @param n
-     */
-    public static void setNumberOfThreads(int n) {
-        if (n < 1)
-            throw new IllegalArgumentException("n must be greater or equal 1");
-        NTHREADS = n;
-    }
     
     /**
      * Waits for all threads to complete computation.
@@ -398,6 +369,35 @@ public class ConcurrencyUtils {
         return a;
     }
 
+    /**
+     * Returns the number of available processors.
+     * 
+     * @return number of available processors
+     */
+    public static int getNumberOfProcessors() {
+        return Runtime.getRuntime().availableProcessors();
+    }
+
+    /**
+     * Returns the current number of threads.
+     * 
+     * @return the current number of threads.
+     */
+    public static int getNumberOfThreads() {
+        return NTHREADS;
+    }
+
+    /**
+     * Sets the number of threads
+     * 
+     * @param n
+     */
+    public static void setNumberOfThreads(int n) {
+        if (n < 1)
+            throw new IllegalArgumentException("n must be greater or equal 1");
+        NTHREADS = n;
+    }
+    
     /**
      * Returns the minimal size of 1D data for which threads are used.
      * 
