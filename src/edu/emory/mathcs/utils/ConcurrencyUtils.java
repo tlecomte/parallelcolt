@@ -166,6 +166,17 @@ public class ConcurrencyUtils {
     }
 
     /**
+     * Sets the number of threads
+     * 
+     * @param n
+     */
+    public static void setNumberOfThreads(int n) {
+        if (n < 1)
+            throw new IllegalArgumentException("n must be greater or equal 1");
+        NTHREADS = n;
+    }
+    
+    /**
      * Waits for all threads to complete computation.
      * 
      * @param futures
@@ -507,17 +518,6 @@ public class ConcurrencyUtils {
         THREADS_BEGIN_N_2D = 65536;
         THREADS_BEGIN_N_3D = 65536;
 
-    }
-
-    /**
-     * Sets the number of threads
-     * 
-     * @param n
-     */
-    public static void setNumberOfThreads(int n) {
-        if (n < 1)
-            throw new IllegalArgumentException("n must be greater or equal 1");
-        NTHREADS = n;
     }
 
     /**
