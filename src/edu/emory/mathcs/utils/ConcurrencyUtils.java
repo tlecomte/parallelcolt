@@ -517,7 +517,6 @@ public class ConcurrencyUtils {
         THREADS_BEGIN_N_1D = 32768;
         THREADS_BEGIN_N_2D = 65536;
         THREADS_BEGIN_N_3D = 65536;
-
     }
 
     /**
