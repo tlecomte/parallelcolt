@@ -46,6 +46,8 @@ import java.util.Random;
  */
 public class IOUtils {
 
+    private static final String FF = "%.4f";
+
     /**
      * Fills 1D matrix with random numbers.
      * 
@@ -253,6 +255,7 @@ public class IOUtils {
      * array. Complex data is represented by 2 double values in sequence: the
      * real and imaginary parts.
      * 
+     * @param format
      * @param x
      * @param title
      */
@@ -278,10 +281,23 @@ public class IOUtils {
     }
 
     /**
+     * Displays elements of <code>x</code>, assuming that it is 1D complex
+     * array. Complex data is represented by 2 double values in sequence: the
+     * real and imaginary parts.
+     * 
+     * @param x
+     * @param title
+     */
+    public static void showComplex_1D(double[] x, String title) {
+    	showComplex_1D(FF, x, title);
+    }
+    
+    /**
      * Displays elements of <code>x</code>, assuming that it is 2D complex
      * array. Complex data is represented by 2 double values in sequence: the
      * real and imaginary parts.
      * 
+     * @param format
      * @param rows
      * @param columns
      * @param x
@@ -314,10 +330,25 @@ public class IOUtils {
     }
 
     /**
+     * Displays elements of <code>x</code>, assuming that it is 2D complex
+     * array. Complex data is represented by 2 double values in sequence: the
+     * real and imaginary parts.
+     * 
+     * @param rows
+     * @param columns
+     * @param x
+     * @param title
+     */
+    public static void showComplex_2D(int rows, int columns, double[] x, String title) {
+    	showComplex_2D(FF, rows, columns, x, title);
+    }
+    
+    /**
      * Displays elements of <code>x</code>, assuming that it is 3D complex
      * array. Complex data is represented by 2 double values in sequence: the
      * real and imaginary parts.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param n3
@@ -356,10 +387,139 @@ public class IOUtils {
         }
         System.out.println("");
     }
+    
+    /**
+     * Displays elements of <code>x</code>, assuming that it is 3D complex
+     * array. Complex data is represented by 2 double values in sequence: the
+     * real and imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showComplex_3D(int n1, int n2, int n3, double[] x, String title) {
+    	showComplex_3D(FF, n1, n2, n3, x, title);
+    }
+    
+    /**
+     * Displays elements of <code>x</code>. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param format
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showComplex_3D(String format, int n1, int n2, int n3, double[][][] x, String title) {
+        System.out.println(title);
+        System.out.println("-------------------");
+
+        for (int k = 0; k < 2 * n3; k = k + 2) {
+            System.out.println("(:,:," + k / 2 + ")=\n");
+            for (int i = 0; i < n1; i++) {
+                for (int j = 0; j < n2; j++) {
+                    if (x[i][j][k + 1] == 0) {
+                        System.out.print(String.format(format, x[i][j][k]) + "\t");
+                        continue;
+                    }
+                    if (x[i][j][k] == 0) {
+                        System.out.print(String.format(format, x[i][j][k + 1]) + "i\t");
+                        continue;
+                    }
+                    if (x[i][j][k + 1] < 0) {
+                        System.out.print(String.format(format, x[i][j][k]) + " - " + String.format(format, -x[i][j][k + 1]) + "i\t");
+                        continue;
+                    }
+                    System.out.print(String.format(format, x[i][j][k]) + " + " + String.format(format, x[i][j][k + 1]) + "i\t");
+                }
+                System.out.println("");
+            }
+        }
+        System.out.println("");
+    }
+    
+    /**
+     * Displays elements of <code>x</code>. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showComplex_3D(int n1, int n2, int n3, double[][][] x, String title) {
+    	showComplex_3D(FF, n1, n2, n3, x, title);
+    }
+    
+    /**
+     * Displays elements of <code>x</code>, assuming that it is 3D complex
+     * array. Complex data is represented by 2 double values in sequence: the
+     * real and imaginary parts.
+     * 
+     * @param format
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showComplex_3D(String format, int n1, int n2, int n3, float[] x, String title) {
+        int sliceStride = n2 * 2 * n3;
+        int rowStride = 2 * n3;
+
+        System.out.println(title);
+        System.out.println("-------------------");
+
+        for (int k = 0; k < 2 * n3; k = k + 2) {
+            System.out.println("(:,:," + k / 2 + ")=\n");
+            for (int i = 0; i < n1; i++) {
+                for (int j = 0; j < n2; j++) {
+                    if (x[i * sliceStride + j * rowStride + k + 1] == 0) {
+                        System.out.print(String.format(format, x[i * sliceStride + j * rowStride + k]) + "\t");
+                        continue;
+                    }
+                    if (x[i * sliceStride + j * rowStride + k] == 0) {
+                        System.out.print(String.format(format, x[i * sliceStride + j * rowStride + k + 1]) + "i\t");
+                        continue;
+                    }
+                    if (x[i * sliceStride + j * rowStride + k + 1] < 0) {
+                        System.out.print(String.format(format, x[i * sliceStride + j * rowStride + k]) + " - "
+                                + String.format(format, -x[i * sliceStride + j * rowStride + k + 1]) + "i\t");
+                        continue;
+                    }
+                    System.out.print(String.format(format, x[i * sliceStride + j * rowStride + k]) + " + "
+                            + String.format(format, x[i * sliceStride + j * rowStride + k + 1]) + "i\t");
+                }
+                System.out.println("");
+            }
+        }
+        System.out.println("");
+    }
+    
+    /**
+     * Displays elements of <code>x</code>, assuming that it is 3D complex
+     * array. Complex data is represented by 2 double values in sequence: the
+     * real and imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showComplex_3D(int n1, int n2, int n3, float[] x, String title) {
+    	showComplex_3D(FF, n1, n2, n3, x, title);
+    }
 
     /**
      * Displays elements of <code>x</code>, assuming that it is 1D real array.
      * 
+     * @param format
      * @param x
      * @param title
      */
@@ -373,8 +533,19 @@ public class IOUtils {
     }
 
     /**
+     * Displays elements of <code>x</code>, assuming that it is 1D real array.
+     * 
+     * @param x
+     * @param title
+     */
+    public static void showReal_1D(double[] x, String title) {
+    	showReal_1D(FF, x, title);
+    }
+    
+    /**
      * Displays elements of <code>x</code>, assuming that it is 2D real array.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param x
@@ -395,10 +566,23 @@ public class IOUtils {
         }
         System.out.println();
     }
+    
+    /**
+     * Displays elements of <code>x</code>, assuming that it is 2D real array.
+     * 
+     * @param n1
+     * @param n2
+     * @param x
+     * @param title
+     */
+    public static void showReal_2D(int n1, int n2, double[] x, String title) {
+    	showReal_2D(FF, n1, n2, x, title);
+    }
 
     /**
      * Displays elements of <code>x</code>, assuming that it is 3D real array.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param n3
@@ -428,12 +612,71 @@ public class IOUtils {
         }
         System.out.println();
     }
+    
+    /**
+     * Displays elements of <code>x</code>, assuming that it is 3D real array.
+     * 
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showReal_3D(int n1, int n2, int n3, double[] x, String title) {
+    	showReal_3D(FF, n1, n2, n3, x, title);
+    }
+    
+    /**
+     * Displays elements of <code>x</code>.
+     * 
+     * @param format
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showReal_3D(String format, int n1, int n2, int n3, double[][][] x, String title) {
+
+        System.out.println(title);
+        System.out.println("-------------------");
+
+        for (int k = 0; k < n3; k++) {
+            System.out.println();
+            System.out.println("(:,:," + k + ")=\n");
+            for (int i = 0; i < n1; i++) {
+                for (int j = 0; j < n2; j++) {
+                    if (Math.abs(x[i][j][k]) <= 5e-5) {
+                        System.out.print("0\t");
+                    } else {
+                        System.out.print(String.format(format, x[i][j][k]) + "\t");
+                    }
+                }
+                System.out.println();
+            }
+        }
+        System.out.println();
+    }
+    
+    /**
+     * Displays elements of <code>x</code>.
+     * 
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param title
+     */
+    public static void showReal_3D(int n1, int n2, int n3, double[][][] x, String title) {
+    	showReal_3D(FF, n1, n2, n3, x, title);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * assuming that it is 1D complex array. Complex data is represented by 2
      * double values in sequence: the real and imaginary parts.
      * 
+     * @param format
      * @param x
      * @param filename
      */
@@ -465,12 +708,75 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 1D complex array. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_1D(double[] x, String filename) {
+    	writeToFileComplex_1D(FF, x, filename);
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 1D complex array. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param format
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_1D(String format, float[] x, String filename) {
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+            for (int i = 0; i < x.length; i = i + 2) {
+                if (x[i + 1] == 0) {
+                    out.write(String.format(format, x[i]));
+                    out.newLine();
+                    continue;
+                }
+                if (x[i] == 0) {
+                    out.write(String.format(format, x[i + 1]) + "i");
+                    out.newLine();
+                    continue;
+                }
+                if (x[i + 1] < 0) {
+                    out.write(String.format(format, x[i]) + " - " + String.format(format, -x[i + 1]) + "i");
+                    out.newLine();
+                    continue;
+                }
+                out.write(String.format(format, x[i]) + " + " + String.format(format, x[i + 1]) + "i");
+                out.newLine();
+            }
+            out.newLine();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 1D complex array. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_1D(float[] x, String filename) {
+    	writeToFileComplex_1D(FF, x, filename);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * assuming that it is 2D complex array. Complex data is represented by 2
      * double values in sequence: the real and imaginary parts.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param x
@@ -523,12 +829,100 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D complex array. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_2D(int n1, int n2, double[] x, String filename) {
+    	writeToFileComplex_2D(FF, n1, n2, x, filename);
+    }
 
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D complex array. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param format
+     * @param n1
+     * @param n2
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_2D(String format, int n1, int n2, float[] x, String filename) {
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+            for (int i = 0; i < n1; i++) {
+                for (int j = 0; j < 2 * n2; j = j + 2) {
+                    if ((Math.abs(x[i * 2 * n2 + j]) < 5e-5) && (Math.abs(x[i * 2 * n2 + j + 1]) < 5e-5)) {
+                        if (x[i * 2 * n2 + j + 1] >= 0.0) {
+                            out.write("0 + 0i\t");
+                        } else {
+                            out.write("0 - 0i\t");
+                        }
+                        continue;
+                    }
+
+                    if (Math.abs(x[i * 2 * n2 + j + 1]) < 5e-5) {
+                        if (x[i * 2 * n2 + j + 1] >= 0.0) {
+                            out.write(String.format(format, x[i * 2 * n2 + j]) + " + 0i\t");
+                        } else {
+                            out.write(String.format(format, x[i * 2 * n2 + j]) + " - 0i\t");
+                        }
+                        continue;
+                    }
+                    if (Math.abs(x[i * 2 * n2 + j]) < 5e-5) {
+                        if (x[i * 2 * n2 + j + 1] >= 0.0) {
+                            out.write("0 + " + String.format(format, x[i * 2 * n2 + j + 1]) + "i\t");
+                        } else {
+                            out.write("0 - " + String.format(format, -x[i * 2 * n2 + j + 1]) + "i\t");
+                        }
+                        continue;
+                    }
+                    if (x[i * 2 * n2 + j + 1] < 0) {
+                        out.write(String.format(format, x[i * 2 * n2 + j]) + " - "
+                                + String.format(format, -x[i * 2 * n2 + j + 1]) + "i\t");
+                        continue;
+                    }
+                    out.write(String.format(format, x[i * 2 * n2 + j]) + " + "
+                            + String.format(format, x[i * 2 * n2 + j + 1]) + "i\t");
+                }
+                out.newLine();
+            }
+
+            out.newLine();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D complex array. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_2D(int n1, int n2, float[] x, String filename) {
+    	writeToFileComplex_2D(FF, n1, n2, x, filename);
+    }
+    
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>. Complex
      * data is represented by 2 double values in sequence: the real and
      * imaginary parts.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param x
@@ -579,12 +973,27 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>. Complex
+     * data is represented by 2 double values in sequence: the real and
+     * imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_2D(int n1, int n2, double[][] x, String filename) {
+    	writeToFileComplex_2D(FF, n1, n2, x, filename);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * assuming that it is 3D complex array. Complex data is represented by 2
      * double values in sequence: the real and imaginary parts.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param n3
@@ -628,12 +1037,28 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 3D complex array. Complex data is represented by 2
+     * double values in sequence: the real and imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_3D(int n1, int n2, int n3, double[] x, String filename) {
+    	writeToFileComplex_3D(FF, n1, n2, n3, x, filename);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>. Complex
      * data is represented by 2 double values in sequence: the real and
      * imaginary parts.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param n3
@@ -675,11 +1100,27 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>. Complex
+     * data is represented by 2 double values in sequence: the real and
+     * imaginary parts.
+     * 
+     * @param n1
+     * @param n2
+     * @param n3
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileComplex_3D(int n1, int n2, int n3, double[][][] x, String filename) {
+    	writeToFileComplex_3D(FF, n1, n2, n3, x, filename);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * assuming that it is 2D real array.
      * 
+     * @param format
      * @param x
      * @param filename
      */
@@ -694,6 +1135,49 @@ public class IOUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D real array.
+     * 
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_1D(double[] x, String filename) {
+    	writeToFileReal_1D(FF, x, filename);
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D real array.
+     * 
+     * @param format
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_1D(String format, float[] x, String filename) {
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+            for (int j = 0; j < x.length; j++) {
+                out.write(String.format(format, x[j]));
+                out.newLine();
+            }
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D real array.
+     * 
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_1D(float[] x, String filename) {
+    	writeToFileReal_1D(FF, x, filename);
     }
 
     /**
@@ -720,6 +1204,7 @@ public class IOUtils {
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * assuming that it is 2D real array.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param x
@@ -739,10 +1224,66 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D real array.
+     * 
+     * @param n1
+     * @param n2
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_2D(int n1, int n2, double[] x, String filename) {
+    	writeToFileReal_2D(FF, n1, n2, x, filename);
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D real array.
+     * 
+     * @param format
+     * @param n1
+     * @param n2
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_2D(String format, int n1, int n2, float[] x, String filename) {
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
+            for (int i = 0; i < n1; i++) {
+                for (int j = 0; j < n2; j++) {
+                	if (Math.abs(x[i * n2 + j]) < 5e-5) {
+                        out.write("0\t");
+                    } else {
+                        out.write(String.format(format, x[i * n2 + j]) + "\t");
+                    }
+                }
+                out.newLine();
+            }
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 2D real array.
+     * 
+     * @param n1
+     * @param n2
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_2D(int n1, int n2, float[] x, String filename) {
+    	writeToFileReal_2D(FF, n1, n2, x, filename);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * 
+     * @param format
      * @param x
      * @param filename
      */
@@ -760,10 +1301,21 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * 
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_2D(double[][] x, String filename) {
+    	writeToFileReal_2D(FF, x, filename);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * 
+     * @param format
      * @param x
      * @param filename
      */
@@ -781,11 +1333,22 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * 
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_2D(float[][] x, String filename) {
+    	writeToFileReal_2D(FF, x, filename);
+    }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * assuming that it is 3D real array.
      * 
+     * @param format
      * @param slices
      * @param rows
      * @param columns
@@ -816,59 +1379,26 @@ public class IOUtils {
             e.printStackTrace();
         }
     }
-
+    
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
-     * assuming that it is 2D real array.
+     * assuming that it is 3D real array.
      * 
+     * @param slices
+     * @param rows
+     * @param columns
      * @param x
      * @param filename
      */
-    public static void writeToFileReal_1D(String format, float[] x, String filename) {
-        try {
-            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
-            for (int j = 0; j < x.length; j++) {
-                out.write(String.format(format, x[j]));
-                out.newLine();
-            }
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
-     * Saves elements of <code>x</code> in a file <code>filename</code>,
-     * assuming that it is 2D real array.
-     * 
-     * @param n1
-     * @param n2
-     * @param x
-     * @param filename
-     */
-    public static void writeToFileReal_2D(String format, int n1, int n2, float[] x, String filename) {
-        try {
-            BufferedWriter out = new BufferedWriter(new FileWriter(filename));
-            for (int i = 0; i < n1; i++) {
-                for (int j = 0; j < n2; j++) {
-                    if (Math.abs(x[i * n2 + j]) < 5e-5) {
-                        out.write("0\t");
-                    } else {
-                        out.write(String.format(format, x[i * n2 + j]) + "\t");
-                    }
-                }
-                out.newLine();
-            }
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void writeToFileReal_3D(int slices, int rows, int columns, double[] x, String filename) {
+    	writeToFileReal_3D(FF, slices, rows, columns, x, filename);
     }
 
     /**
      * Saves elements of <code>x</code> in a file <code>filename</code>,
      * assuming that it is 3D real array.
      * 
+     * @param format
      * @param n1
      * @param n2
      * @param n3
@@ -898,6 +1428,20 @@ public class IOUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    /**
+     * Saves elements of <code>x</code> in a file <code>filename</code>,
+     * assuming that it is 3D real array.
+     * 
+     * @param slices
+     * @param rows
+     * @param columns
+     * @param x
+     * @param filename
+     */
+    public static void writeToFileReal_3D(int slices, int rows, int columns, float[] x, String filename) {
+    	writeToFileReal_3D(FF, slices, rows, columns, x, filename);
     }
 
     /**
