@@ -40,7 +40,7 @@ import java.util.Date;
 import java.util.Random;
 
 /**
- * Utility methods.
+ * I/O utilities.
  * 
  * @author Piotr Wendykier (piotr.wendykier@gmail.com)
  */
