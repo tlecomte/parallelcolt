@@ -901,7 +901,7 @@ public class IOUtils {
     }
 
     /**
-     * Saves results of the benchmark in a file
+     * Saves benchmark results in a file.
      * 
      * @param filename
      * @param nthread
@@ -911,8 +911,7 @@ public class IOUtils {
      * @param times
      * @param sizes
      */
-    public static void writeFFTBenchmarkResultsToFile(String filename, int nthread, int niter, boolean doWarmup,
-            boolean doScaling, int[] sizes, double[] times) {
+    public static void writeFFTBenchmarkResultsToFile(String filename, int nthread, int niter, boolean doWarmup, boolean doScaling, int[] sizes, double[] times) {
         String[] properties = { "os.name", "os.version", "os.arch", "java.vendor", "java.version" };
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(filename, false));
@@ -946,8 +945,7 @@ public class IOUtils {
             out.newLine();
             out.write("\tscaling performed = " + doScaling);
             out.newLine();
-            out
-                    .write("--------------------------------------------------------------------------------------------------");
+            out.write("--------------------------------------------------------------------------------------------------");
             out.newLine();
             out.write("sizes=[");
             for (int i = 0; i < sizes.length; i++) {
