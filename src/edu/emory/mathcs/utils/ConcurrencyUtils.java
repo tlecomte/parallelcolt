@@ -388,7 +388,7 @@ public class ConcurrencyUtils {
     }
 
     /**
-     * Sets the number of threads
+     * Sets the number of threads.
      * 
      * @param n
      */
