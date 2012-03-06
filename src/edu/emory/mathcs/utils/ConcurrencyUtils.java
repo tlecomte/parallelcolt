@@ -57,7 +57,7 @@ public class ConcurrencyUtils {
     /**
      * Thread pool.
      */
-    private static ExecutorService THREAD_POOL = Executors.newCachedThreadPool(new CustomThreadFactory(new CustomExceptionHandler()));
+    private static final ExecutorService THREAD_POOL = Executors.newCachedThreadPool(new CustomThreadFactory(new CustomExceptionHandler()));
 
     private static int THREADS_BEGIN_N_1D_FFT_2THREADS = 8192;
 
@@ -70,7 +70,7 @@ public class ConcurrencyUtils {
     private static int THREADS_BEGIN_N_3D = 65536;
 
     private static int NTHREADS = getNumberOfProcessors();
-    
+
     private static class CustomExceptionHandler implements Thread.UncaughtExceptionHandler {
         public void uncaughtException(Thread t, Throwable e) {
             e.printStackTrace();
@@ -110,13 +110,6 @@ public class ConcurrencyUtils {
     }
 
     /**
-     * Shutdowns the thread pool.
-     */
-    public static void shutdown() {
-        THREAD_POOL.shutdown();
-    }
-
-    /**
      * Submits a value-returning task for execution and returns a Future
      * representing the pending results of the task.
      * 
@@ -126,9 +119,6 @@ public class ConcurrencyUtils {
      * @return a handle to the task submitted for execution
      */
     public static <T> Future<T> submit(Callable<T> task) {
-        if (THREAD_POOL.isShutdown() || THREAD_POOL.isTerminated()) {
-            THREAD_POOL = Executors.newCachedThreadPool(new CustomThreadFactory(new CustomExceptionHandler()));
-        }
         return THREAD_POOL.submit(task);
     }
 
@@ -141,12 +131,9 @@ public class ConcurrencyUtils {
      * @return a handle to the task submitted for execution
      */
     public static Future<?> submit(Runnable task) {
-        if (THREAD_POOL.isShutdown() || THREAD_POOL.isTerminated()) {
-            THREAD_POOL = Executors.newCachedThreadPool(new CustomThreadFactory(new CustomExceptionHandler()));
-        }
         return THREAD_POOL.submit(task);
     }
-    
+
     /**
      * Waits for all threads to complete computation.
      * 
