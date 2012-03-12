@@ -147,7 +147,7 @@ public class DenseFComplexMatrix1D extends FComplexMatrix1D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(new float[] { elements[zero], elements[zero + 1] });
             int idx = zero;
@@ -200,7 +200,7 @@ public class DenseFComplexMatrix1D extends FComplexMatrix1D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             int idx = zero;
             int idxOther = zeroOther;

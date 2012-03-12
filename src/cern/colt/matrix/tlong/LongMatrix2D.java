@@ -115,7 +115,7 @@ public abstract class LongMatrix2D extends AbstractMatrix2D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(getQuick(0, 0));
             int d = 1; // first cell already done
@@ -179,7 +179,7 @@ public abstract class LongMatrix2D extends AbstractMatrix2D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             long elem = getQuick(0, 0);
             if (cond.apply(elem) == true) {
@@ -247,7 +247,7 @@ public abstract class LongMatrix2D extends AbstractMatrix2D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             long elem;
             a = f.apply(getQuick(rowElements[0], columnElements[0]));
@@ -333,7 +333,7 @@ public abstract class LongMatrix2D extends AbstractMatrix2D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(getQuick(0, 0), other.getQuick(0, 0));
             int d = 1; // first cell already done

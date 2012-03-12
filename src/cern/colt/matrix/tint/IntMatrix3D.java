@@ -115,7 +115,7 @@ public abstract class IntMatrix3D extends AbstractMatrix3D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(getQuick(0, 0, 0));
             int d = 1; // first cell already done
@@ -183,7 +183,7 @@ public abstract class IntMatrix3D extends AbstractMatrix3D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             int elem = getQuick(0, 0, 0);
             if (cond.apply(elem) == true) {
@@ -258,7 +258,7 @@ public abstract class IntMatrix3D extends AbstractMatrix3D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(getQuick(sliceElements[0], rowElements[0], columnElements[0]));
             int elem;
@@ -351,7 +351,7 @@ public abstract class IntMatrix3D extends AbstractMatrix3D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(getQuick(0, 0, 0), other.getQuick(0, 0, 0));
             int d = 1; // first cell already done

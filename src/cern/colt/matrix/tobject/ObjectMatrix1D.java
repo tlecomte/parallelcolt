@@ -86,7 +86,7 @@ public abstract class ObjectMatrix1D extends AbstractMatrix1D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             for (int i = 1; i < size; i++) {
                 a = aggr.apply(a, f.apply(getQuick(i)));
@@ -139,7 +139,7 @@ public abstract class ObjectMatrix1D extends AbstractMatrix1D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             Object elem;
             a = f.apply(getQuick(indexElements[0]));
@@ -212,7 +212,7 @@ public abstract class ObjectMatrix1D extends AbstractMatrix1D {
                     }
                 });
             }
-            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             for (int i = 1; i < size; i++) {
                 a = aggr.apply(a, f.apply(getQuick(i), other.getQuick(i)));
