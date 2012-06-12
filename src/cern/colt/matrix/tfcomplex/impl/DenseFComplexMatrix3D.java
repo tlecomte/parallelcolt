@@ -217,7 +217,7 @@ public class DenseFComplexMatrix3D extends FComplexMatrix3D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(new float[] { elements[zero], elements[zero + 1] });
             int d = 1; // first cell already done
@@ -285,7 +285,7 @@ public class DenseFComplexMatrix3D extends FComplexMatrix3D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(new float[] { elements[zero], elements[zero + 1] }, new float[] { elemsOther[zeroOther],
                     elemsOther[zeroOther + 1] });

@@ -126,7 +126,7 @@ public class DenseIntMatrix1D extends IntMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(elements[zero]);
             int idx = zero;
@@ -168,7 +168,7 @@ public class DenseIntMatrix1D extends IntMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             int elem;
             int idx = zero + indexElements[0] * stride;
@@ -216,7 +216,7 @@ public class DenseIntMatrix1D extends IntMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(elements[zero], elemsOther[zeroOther]);
             int idx = zero;

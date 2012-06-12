@@ -217,7 +217,7 @@ public class DenseColumnIntMatrix2D extends IntMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(elements[zero + (rows - 1) * rowStride + (columns - 1) * columnStride]);
             int d = 1;
@@ -268,7 +268,7 @@ public class DenseColumnIntMatrix2D extends IntMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             int elem = elements[zero + (rows - 1) * rowStride + (columns - 1) * columnStride];
             if (cond.apply(elem) == true) {
@@ -319,7 +319,7 @@ public class DenseColumnIntMatrix2D extends IntMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(elements[zero + rowElements[size - 1] * rowStride + columnElements[size - 1] * columnStride]);
             for (int i = size - 1; --i >= 0;) {
@@ -371,7 +371,7 @@ public class DenseColumnIntMatrix2D extends IntMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             int d = 1;
             a = f.apply(elements[zero + (rows - 1) * rowStride + (columns - 1) * columnStride], otherElements[zeroOther

@@ -92,7 +92,7 @@ public abstract class DComplexMatrix3D extends AbstractMatrix3D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(getQuick(0, 0, 0));
             int d = 1; // first cell already done
@@ -160,7 +160,7 @@ public abstract class DComplexMatrix3D extends AbstractMatrix3D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(getQuick(0, 0, 0), other.getQuick(0, 0, 0));
             int d = 1; // first cell already done

@@ -128,7 +128,7 @@ public class DenseLongMatrix1D extends LongMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(elements[zero]);
             int idx = zero;
@@ -170,7 +170,7 @@ public class DenseLongMatrix1D extends LongMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             long elem;
             int idx = zero + indexElements[0] * stride;
@@ -218,7 +218,7 @@ public class DenseLongMatrix1D extends LongMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(elements[zero], elemsOther[zeroOther]);
             int idx = zero;

@@ -147,7 +147,7 @@ public class DenseDComplexMatrix1D extends DComplexMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(new double[] { elements[zero], elements[zero + 1] });
             int idx = zero;
@@ -200,7 +200,7 @@ public class DenseDComplexMatrix1D extends DComplexMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             int idx = zero;
             int idxOther = zeroOther;

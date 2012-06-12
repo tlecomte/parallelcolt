@@ -82,7 +82,7 @@ public abstract class DComplexMatrix1D extends AbstractMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             for (int i = 1; i < size; i++) {
                 a = aggr.apply(a, f.apply(getQuick(i)));
@@ -139,7 +139,7 @@ public abstract class DComplexMatrix1D extends AbstractMatrix1D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             for (int i = 1; i < size; i++) {
                 a = aggr.apply(a, f.apply(getQuick(i), other.getQuick(i)));

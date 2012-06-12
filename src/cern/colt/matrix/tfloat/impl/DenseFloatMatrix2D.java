@@ -231,7 +231,7 @@ public class DenseFloatMatrix2D extends FloatMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             a = f.apply(elements[zero + (rows - 1) * rowStride + (columns - 1) * columnStride]);
             int d = 1;
@@ -282,7 +282,7 @@ public class DenseFloatMatrix2D extends FloatMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             float elem = elements[zero];
             if (cond.apply(elem) == true) {
@@ -333,7 +333,7 @@ public class DenseFloatMatrix2D extends FloatMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             float elem;
             a = f.apply(elements[zero + rowElements[0] * rowStride + columnElements[0] * columnStride]);
@@ -384,7 +384,7 @@ public class DenseFloatMatrix2D extends FloatMatrix2D {
                     }
                 });
             }
-            a = cern.colt.ConcurrencyUtils.waitForCompletion(futures, aggr);
+            a = ConcurrencyUtils.waitForCompletion(futures, aggr);
         } else {
             int d = 1; // first cell already done
             a = f.apply(elements[zero], elementsOther[zeroOther]);
