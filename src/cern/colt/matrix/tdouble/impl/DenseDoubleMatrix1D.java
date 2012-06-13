@@ -22,7 +22,7 @@ import edu.emory.mathcs.jtransforms.dct.DoubleDCT_1D;
 import edu.emory.mathcs.jtransforms.dht.DoubleDHT_1D;
 import edu.emory.mathcs.jtransforms.dst.DoubleDST_1D;
 import edu.emory.mathcs.jtransforms.fft.DoubleFFT_1D;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
+import cern.colt.ConcurrencyUtils;
 
 /**
  * Dense 1-d matrix (aka <i>vector</i>) holding <tt>double</tt> elements. First

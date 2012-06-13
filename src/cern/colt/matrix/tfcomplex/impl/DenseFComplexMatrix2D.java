@@ -18,8 +18,8 @@ import cern.colt.matrix.tfcomplex.FComplexMatrix1D;
 import cern.colt.matrix.tfcomplex.FComplexMatrix2D;
 import cern.colt.matrix.tfloat.FloatMatrix2D;
 import cern.colt.matrix.tfloat.impl.DenseFloatMatrix2D;
+import cern.colt.ConcurrencyUtils;
 import edu.emory.mathcs.jtransforms.fft.FloatFFT_2D;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
 
 /**
  * Dense 2-d matrix holding <tt>complex</tt> elements. <b>Implementation:</b>

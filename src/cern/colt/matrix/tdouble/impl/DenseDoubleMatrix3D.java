@@ -18,11 +18,11 @@ import cern.colt.matrix.tdcomplex.impl.DenseDComplexMatrix3D;
 import cern.colt.matrix.tdouble.DoubleMatrix1D;
 import cern.colt.matrix.tdouble.DoubleMatrix2D;
 import cern.colt.matrix.tdouble.DoubleMatrix3D;
+import cern.colt.ConcurrencyUtils;
 import edu.emory.mathcs.jtransforms.dct.DoubleDCT_3D;
 import edu.emory.mathcs.jtransforms.dht.DoubleDHT_3D;
 import edu.emory.mathcs.jtransforms.dst.DoubleDST_3D;
 import edu.emory.mathcs.jtransforms.fft.DoubleFFT_3D;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
 
 /**
  * Dense 3-d matrix holding <tt>double</tt> elements. First see the <a

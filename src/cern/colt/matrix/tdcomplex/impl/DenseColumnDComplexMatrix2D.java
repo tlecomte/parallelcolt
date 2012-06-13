@@ -19,8 +19,8 @@ import cern.colt.matrix.tdcomplex.DComplexMatrix2D;
 import cern.colt.matrix.tdouble.DoubleMatrix2D;
 import cern.colt.matrix.tdouble.impl.DenseColumnDoubleMatrix2D;
 import cern.colt.matrix.tdouble.impl.DenseDoubleMatrix2D;
+import cern.colt.ConcurrencyUtils;
 import edu.emory.mathcs.jtransforms.fft.DoubleFFT_2D;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
 
 /**
  * Dense 2-d matrix holding <tt>complex</tt> elements. <b>Implementation:</b>

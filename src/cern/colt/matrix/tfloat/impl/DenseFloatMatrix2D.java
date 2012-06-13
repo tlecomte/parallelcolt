@@ -21,11 +21,11 @@ import cern.colt.matrix.io.MatrixVectorReader;
 import cern.colt.matrix.tfcomplex.impl.DenseFComplexMatrix2D;
 import cern.colt.matrix.tfloat.FloatMatrix1D;
 import cern.colt.matrix.tfloat.FloatMatrix2D;
+import cern.colt.ConcurrencyUtils;
 import edu.emory.mathcs.jtransforms.dct.FloatDCT_2D;
 import edu.emory.mathcs.jtransforms.dht.FloatDHT_2D;
 import edu.emory.mathcs.jtransforms.dst.FloatDST_2D;
 import edu.emory.mathcs.jtransforms.fft.FloatFFT_2D;
-import edu.emory.mathcs.utils.ConcurrencyUtils;
 
 /**
  * Dense 2-d matrix holding <tt>float</tt> elements. First see the <a
